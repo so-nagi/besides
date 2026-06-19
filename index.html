@@ -413,7 +413,7 @@ function drawSpark(){
   const iv=setInterval(()=>{sx.textContent=frag()},70);
   setTimeout(()=>{clearInterval(iv);settle()},620);
 }
-function pull(){if(spinning)return;const l=$("#draw");if(l){l.classList.remove("hint","pull");void l.offsetWidth;l.classList.add("pull")}if(navigator.vibrate)navigator.vibrate(14);drawSpark()}
+function pull(){if(spinning)return;const l=$("#draw");if(l){l.classList.remove("hint","pull");void l.offsetWidth;l.classList.add("pull");if(l.blur)l.blur()}if(navigator.vibrate)navigator.vibrate(14);drawSpark()}
 let _st;function status(m){const h=$("#status");if(!h)return;h.textContent=m;clearTimeout(_st);_st=setTimeout(()=>{h.textContent="Space로 뽑고, Enter로 모아요."},3000)}
 
 /* ===== 담기 / 장바구니 / 메모 / 비우기 ===== */
