@@ -32,7 +32,7 @@ textarea{font:inherit;color:inherit;outline:none}
 .recess{background:transparent}
 
 /* ===== 기계 ===== */
-.stage{position:relative;width:344px;max-width:100%}
+.stage{position:relative;width:376px;max-width:100%}
 .machine{width:100%;max-width:100%;position:relative;z-index:1;background:var(--c-body);
   border-radius:44px 44px 16px 16px;padding:.7rem 0;border:1px solid var(--line);box-shadow:none}
 .base{position:absolute;left:50%;bottom:-9px;transform:translateX(-50%);width:74%;height:14px;border-radius:0 0 16px 16px;background:var(--c-lo);z-index:-1}
@@ -102,8 +102,8 @@ textarea{font:inherit;color:inherit;outline:none}
 .knob::-moz-color-swatch{border:none;border-radius:50%}
 .knob::after{content:none}
 .knob:active{transform:translateY(1px)}
-.tray{position:relative;margin:.7rem auto 0;width:80%;max-width:280px;height:.85rem;border-radius:9999px;background:var(--c-hi);border:1px solid var(--line)}
-.tray::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:86%;height:3px;border-radius:3px;background:var(--ink);opacity:.5}
+.tray{position:relative;margin:.7rem auto 0;width:80%;max-width:308px;height:.85rem;border-radius:9999px;background:var(--c-hi);border:1px solid var(--line)}
+.tray::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:88%;height:3px;border-radius:3px;background:var(--ink);opacity:.5}
 
 /* ===== 오버레이 ===== */
 .ov{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(20,20,24,.4);backdrop-filter:blur(3px);z-index:60;padding:1.5rem}
@@ -130,16 +130,16 @@ textarea{font:inherit;color:inherit;outline:none}
 .status{text-align:center;font-size:.58rem;color:var(--ink-soft);margin:.5rem 1.4rem 0;letter-spacing:.04em}
 
 /* ===== 영수증 (이미지·화면밖) ===== */
-#receipt{width:232px;background:#f6f5f7}
+#receipt{width:268px;background:#f6f5f7}
 /* 배출구에서 인쇄되어 나오는 종이 */
-#paperMask{position:absolute;left:50%;transform:translateX(-50%);top:calc(100% - 1.2rem);width:232px;z-index:2;overflow:hidden;max-height:0;display:none;cursor:pointer;filter:drop-shadow(0 10px 16px rgba(60,50,40,.22))}
+#paperMask{position:absolute;left:50%;transform:translateX(-50%);top:calc(100% - 1.2rem);width:268px;z-index:2;overflow:hidden;max-height:0;display:none;cursor:pointer;filter:drop-shadow(0 10px 16px rgba(60,50,40,.22))}
 @keyframes printout{from{max-height:0}to{max-height:var(--ph,1600px)}}
 #paperMask.run{animation:printout var(--pdur,3.4s) steps(40) both}
 @keyframes tearShake{0%,100%{transform:translateX(-50%)}20%{transform:translateX(-51%) rotate(-.5deg)}40%{transform:translateX(-49%) rotate(.5deg)}60%{transform:translateX(-50.5%) rotate(-.3deg)}80%{transform:translateX(-49.5%)}}
 #paperMask.torn{animation:tearShake .42s ease}
 /* 확대 보기 */
 .big-wrap{display:flex;flex-direction:column;align-items:center;gap:1.1rem;max-height:92vh}
-.big-paper{zoom:1.3;filter:drop-shadow(0 12px 22px rgba(40,34,28,.3));max-height:64vh;overflow:auto}
+.big-paper{zoom:1.3;filter:drop-shadow(0 12px 22px rgba(40,34,28,.3));max-height:64vh;overflow-y:auto;overflow-x:hidden}
 @keyframes bigIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 #rcptBig.open .big-paper{animation:bigIn .3s cubic-bezier(.2,.9,.3,1.1)}
 .big-actions{display:flex;gap:.5rem}
@@ -165,7 +165,7 @@ textarea{font:inherit;color:inherit;outline:none}
   #rcptBig *{box-shadow:none!important}
   .rc{box-shadow:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
-.rc{width:232px;padding:20px 16px;color:#141414;background:#fbfbfc;font-family:var(--mono);font-size:11px;line-height:1.6}
+.rc{width:268px;padding:22px 20px;color:#141414;background:#fbfbfc;font-family:var(--mono);font-size:11px;line-height:1.6}
 .rc-h{text-align:center;font-size:15px;font-weight:500;letter-spacing:.01em}
 .rc-h span{display:block;font-size:9px;font-weight:400;letter-spacing:.12em;margin-top:4px;color:#666}
 .rc-d{text-align:center;font-size:10px;color:#666;margin-top:5px}
@@ -174,7 +174,7 @@ textarea{font:inherit;color:inherit;outline:none}
 .rc-i{margin-bottom:7px}.rc-i .rik{display:block;color:#918e97;font-size:7.5px;letter-spacing:.08em;margin-bottom:2px}
 .rir{display:flex;justify-content:space-between;gap:10px;align-items:baseline}.rit{flex:1;font-size:9.5px;line-height:1.45}.rip{flex-shrink:0;white-space:nowrap;font-weight:500}
 .rc-sum{display:flex;justify-content:space-between;font-size:12px;margin-top:3px}.rc-sum b{font-weight:600}.rc-sum.sub{font-size:10px;color:#757279}
-.rc-note{text-align:center;font-size:8.5px;line-height:1.5;color:#8a8790;letter-spacing:.02em;white-space:nowrap;margin-top:5px}
+.rc-note{text-align:center;font-size:9px;line-height:1.6;color:#8a8790;letter-spacing:.05em;margin-top:6px}
 .rc-bar{display:flex;gap:1px;justify-content:center;align-items:flex-end;height:42px;margin-top:8px}.rc-bar i{display:block;height:100%;background:#2a2622}
 .rc-num{text-align:center;font-size:10px;letter-spacing:.25em;margin-top:5px}
 .rc-m{font-size:11.5px;white-space:pre-wrap;color:#333}
@@ -437,7 +437,7 @@ function buildReceipt(){
     +(items.length?items.map(s=>'<div class="rc-i"><span class="rik">'+esc(s.kind)+'</span><div class="rir"><span class="rit">'+esc(s.text)+'</span></div></div>').join(""):'<div class="rc-i"><div class="rir"><span class="rit">— 아직 뽑은 것이 없어요 —</span></div></div>')
     +'<div class="rc-sep thin"></div><div class="rc-sum"><span>합계</span><b>PRICELESS</b></div><div class="rc-sum sub"><span>담은 아이디어</span><span>'+items.length+'개</span></div>'
     +(memo?'<div class="rc-sep"></div><div class="rc-t">메모</div><div class="rc-m">'+esc(memo)+'</div>':"")
-    +'<div class="rc-sep"></div><div class="rc-note">Its worth is thine alone to name.</div><div class="rc-bar">'+bars+'</div><div class="rc-num">'+ean+'</div><div class="rc-f">오늘의 한 조각.</div><div class="rc-copy">ⓒ beside. by nagi</div></div>';
+    +'<div class="rc-sep"></div><div class="rc-note">Its worth is,<br>thine alone to name.</div><div class="rc-bar">'+bars+'</div><div class="rc-num">'+ean+'</div><div class="rc-f">오늘의 한 조각.</div><div class="rc-copy">ⓒ beside. by nagi</div></div>';
   const el=$("#receipt"),rc=el.querySelector(".rc");
   const a3=hexMix(S.acc||"#acafff",0),t10="rgba("+a3[0]+","+a3[1]+","+a3[2]+",.1)";
   rc.style.background="linear-gradient("+t10+","+t10+"),#ffffff";
