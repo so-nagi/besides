@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>곁, Besides®</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23141414%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203a9%209%200%201%201%200%2018a9%209%200%200%201%200%20-18z%22%2F%3E%3Cpath%20d%3D%22M6%2012a6%206%200%200%201%206%20-6%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -165,7 +166,7 @@ textarea{font:inherit;color:inherit;outline:none}
   .rc{box-shadow:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 .rc{width:232px;padding:20px 16px;color:#141414;background:#fbfbfc;font-family:var(--mono);font-size:11px;line-height:1.6}
-.rc-h{text-align:center;font-size:19px;font-weight:500;letter-spacing:.04em}
+.rc-h{text-align:center;font-size:15px;font-weight:500;letter-spacing:.01em}
 .rc-h span{display:block;font-size:9px;font-weight:400;letter-spacing:.12em;margin-top:4px;color:#666}
 .rc-d{text-align:center;font-size:10px;color:#666;margin-top:5px}
 .rc-sep{border-top:1px dashed #d0d0d0;margin:11px 0}.rc-sep.thin{border-top:1px solid #d0d0d0}
@@ -173,7 +174,7 @@ textarea{font:inherit;color:inherit;outline:none}
 .rc-i{margin-bottom:7px}.rc-i .rik{display:block;color:#918e97;font-size:7.5px;letter-spacing:.08em;margin-bottom:2px}
 .rir{display:flex;justify-content:space-between;gap:10px;align-items:baseline}.rit{flex:1;font-size:9.5px;line-height:1.45}.rip{flex-shrink:0;white-space:nowrap;font-weight:500}
 .rc-sum{display:flex;justify-content:space-between;font-size:12px;margin-top:3px}.rc-sum b{font-weight:600}.rc-sum.sub{font-size:10px;color:#757279}
-.rc-note{text-align:center;font-size:9.5px;color:#8a8790;letter-spacing:.08em;margin-top:5px}
+.rc-note{text-align:center;font-size:9px;line-height:1.5;color:#8a8790;letter-spacing:.06em;margin-top:5px}
 .rc-bar{display:flex;gap:1px;justify-content:center;align-items:flex-end;height:42px;margin-top:8px}.rc-bar i{display:block;height:100%;background:#2a2622}
 .rc-num{text-align:center;font-size:10px;letter-spacing:.25em;margin-top:5px}
 .rc-m{font-size:11.5px;white-space:pre-wrap;color:#333}
@@ -413,7 +414,7 @@ function drawSpark(){
   setTimeout(()=>{clearInterval(iv);settle()},620);
 }
 function pull(){if(spinning)return;const l=$("#draw");if(l){l.classList.remove("hint","pull");void l.offsetWidth;l.classList.add("pull")}if(navigator.vibrate)navigator.vibrate(14);drawSpark()}
-let _st;function status(m){const h=$("#status");if(!h)return;h.textContent=m;clearTimeout(_st);_st=setTimeout(()=>{h.textContent="뽑기 · Space로도 뽑을 수 있어요."},3000)}
+let _st;function status(m){const h=$("#status");if(!h)return;h.textContent=m;clearTimeout(_st);_st=setTimeout(()=>{h.textContent="Space로 뽑고, Enter로 모아요."},3000)}
 
 /* ===== 담기 / 장바구니 / 메모 / 비우기 ===== */
 function keepSpark(){if(!last){status("먼저 영감을 뽑아주세요");return}S.scraps.unshift({id:uid(),kind:last.kind,text:strip(last.text)});S.scraps=S.scraps.slice(0,60);save();updateBtns();status("수집 완료!");const b=$("#bSave");b.classList.add("lit");setTimeout(()=>b.classList.remove("lit"),900)}
@@ -432,11 +433,11 @@ function buildReceipt(){
   const rno=(Math.floor(Math.random()*9000)+1000)+"-"+(Math.floor(Math.random()*9000)+1000);
   let bars="";for(let i=0;i<46;i++){const w=[1,1,2,3][Math.floor(Math.random()*4)];bars+='<i style="width:'+w+'px"></i>'}
   const ean="9 "+(Math.floor(Math.random()*900000)+100000)+" "+(Math.floor(Math.random()*900000)+100000);
-  $("#receipt").innerHTML='<div class="rc"><div class="rc-h">곁<span>오늘 곁에 둘 아이디어 한 조각.</span></div><div class="rc-d">'+dstr+' · No.'+rno+'</div><div class="rc-sep"></div><div class="rc-t">아이디어 — 품목 '+items.length+'</div>'
+  $("#receipt").innerHTML='<div class="rc"><div class="rc-h">곁, Besides®<span>오늘 곁에 둘 아이디어 한 조각.</span></div><div class="rc-d">'+dstr+' · No.'+rno+'</div><div class="rc-sep"></div><div class="rc-t">아이디어 — 품목 '+items.length+'</div>'
     +(items.length?items.map(s=>'<div class="rc-i"><span class="rik">'+esc(s.kind)+'</span><div class="rir"><span class="rit">'+esc(s.text)+'</span></div></div>').join(""):'<div class="rc-i"><div class="rir"><span class="rit">— 아직 뽑은 것이 없어요 —</span></div></div>')
-    +'<div class="rc-sep thin"></div><div class="rc-sum"><span>합계</span><b>PRICELESS</b></div><div class="rc-sum sub"><span>담은 아이디어</span><span>'+items.length+'개</span></div><div class="rc-note">Its worth is thine alone to name.</div>'
+    +'<div class="rc-sep thin"></div><div class="rc-sum"><span>합계</span><b>PRICELESS</b></div><div class="rc-sum sub"><span>담은 아이디어</span><span>'+items.length+'개</span></div>'
     +(memo?'<div class="rc-sep"></div><div class="rc-t">메모</div><div class="rc-m">'+esc(memo)+'</div>':"")
-    +'<div class="rc-sep"></div><div class="rc-bar">'+bars+'</div><div class="rc-num">'+ean+'</div><div class="rc-f">오늘도, 곁에서.</div><div class="rc-copy">ⓒ beside. by nagi</div></div>';
+    +'<div class="rc-sep"></div><div class="rc-note">Its worth is thine alone to name.</div><div class="rc-bar">'+bars+'</div><div class="rc-num">'+ean+'</div><div class="rc-f">오늘의 한 조각.</div><div class="rc-copy">ⓒ beside. by nagi</div></div>';
   const el=$("#receipt"),rc=el.querySelector(".rc");
   const a3=hexMix(S.acc||"#acafff",0),t10="rgba("+a3[0]+","+a3[1]+","+a3[2]+",.1)";
   rc.style.background="linear-gradient("+t10+","+t10+"),#ffffff";
@@ -524,8 +525,8 @@ document.addEventListener("keydown",e=>{
   if(document.querySelector(".ov.open"))return;
   const t=(e.target&&e.target.tagName||"").toLowerCase();
   if(t==="textarea"||t==="input")return;
-  if(e.code==="Space"||e.key==="Enter"){if(t==="button")return;e.preventDefault();pull();return}
-  if(e.key==="s"||e.key==="S"){keepSpark()}
+  if(e.code==="Space"){if(t==="button")return;e.preventDefault();pull();return}
+  if(e.key==="Enter"){if(t==="button")return;e.preventDefault();keepSpark();return}
 });
 window.addEventListener("storage",e=>{if(e.key===KEY){const d=read(KEY);if(valid(d)){S=Object.assign(S,d);applySkin();renderModes();renderTick();renderTools();updateBtns();if($("#scrapOv").classList.contains("open"))renderScraps()}}});
 window.addEventListener("beforeunload",()=>{try{save()}catch(e){}});
