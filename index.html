@@ -437,7 +437,7 @@ function buildReceipt(){
     +(items.length?items.map(s=>'<div class="rc-i"><span class="rik">'+esc(s.kind)+'</span><div class="rir"><span class="rit">'+esc(s.text)+'</span></div></div>').join(""):'<div class="rc-i"><div class="rir"><span class="rit">— 아직 뽑은 것이 없어요 —</span></div></div>')
     +'<div class="rc-sep thin"></div><div class="rc-sum"><span>합계</span><b>PRICELESS</b></div><div class="rc-sum sub"><span>담은 아이디어</span><span>'+items.length+'개</span></div>'
     +(memo?'<div class="rc-sep"></div><div class="rc-t">메모</div><div class="rc-m">'+esc(memo)+'</div>':"")
-    +'<div class="rc-sep"></div><div class="rc-note">Its worth is,<br>thine alone to name.</div><div class="rc-bar">'+bars+'</div><div class="rc-num">'+ean+'</div><div class="rc-f">오늘의 한 조각.</div><div class="rc-copy">ⓒ beside. by nagi</div></div>';
+    +'<div class="rc-sep"></div><div class="rc-note">Its worth is thine,<br>alone to name.</div><div class="rc-bar">'+bars+'</div><div class="rc-num">'+ean+'</div><div class="rc-f">오늘의 한 조각.</div><div class="rc-copy">ⓒ beside. by nagi</div></div>';
   const el=$("#receipt"),rc=el.querySelector(".rc");
   const a3=hexMix(S.acc||"#acafff",0),t10="rgba("+a3[0]+","+a3[1]+","+a3[2]+",.1)";
   rc.style.background="linear-gradient("+t10+","+t10+"),#ffffff";
